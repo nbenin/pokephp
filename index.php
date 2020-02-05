@@ -11,13 +11,24 @@ if (isset($pokemon)) {
     $dataPokemon = json_decode($responsePokemon, true);
     $dataSpecies = json_decode($responseSpecies, true);
 
-    // Calling functions
-    setIcon($dataPokemon);
+    // Set the image source variable
+    $pokeImg = $dataPokemon{sprites}{front_default};
+    $pokeDescription = getEnglishDescription($dataSpecies);
+
+
 }
 
-// Function to set the icon
-function setIcon($pokeObj) {
-    $pokeImg = $pokeObj{sprites}{front_default};
+// Function to find english description
+function getEnglishDescription($pokeObj) {
+    $pokeDescription = '';
+    foreach ($pokeObj{flavor_text_entries} as $flavorText) {
+        if ($flavorText{language}{name} == 'en') {
+            $pokeDescription = $flavorText{flavor_text};
+        } else {
+            continue;
+        }
+    }
+    return $pokeDescription;
 }
 ?>
 
@@ -43,7 +54,7 @@ function setIcon($pokeObj) {
 <section class="container">
     <section class="P1">
         <section class="pokemonIcon">
-            <img src="<?php echo $pokeImg;?>" alt="Poke icon" class="pokeIcon">
+            <img src="<?php echo $pokeImg; ?>" alt="Poke icon" class="pokeIcon">
             <p class="pokeName"></p>
         </section>
         <form action="" method="GET" class="getinput">
@@ -53,7 +64,7 @@ function setIcon($pokeObj) {
     </section>
     <section class="P2">
         <section class="Descriptionbox">
-            <p class="description"></p>
+            <p class="description"><?php echo $pokeDescription; ?></p>
         </section>
         <section class="movesList">
             <ul id="movesList">
