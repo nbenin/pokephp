@@ -13,9 +13,35 @@ if (isset($pokemon)) {
 
     // Set the image source variable
     $pokeImg = $dataPokemon{sprites}{front_default};
+    // Set description
     $pokeDescription = getEnglishDescription($dataSpecies);
+    // Set moves list
+    $movesList = getMovesList($dataPokemon);
+    var_dump($movesList);
 
+}
 
+// Function for moves list
+function getMovesList($pokeObj) {
+    $fourRandoms = [];
+    $movesCount = 4;
+
+    // Special case for Ditto
+    if (count($pokeObj{moves}) < 4) {
+        $movesCount = count($pokeObj{moves});
+    }
+
+    $randomNums = array_rand($pokeObj{moves}, $movesCount);
+    foreach ($randomNums as $num) {
+        array_push($fourRandoms, $pokeObj{moves}[$num]{move}{name});
+    }
+
+    // Again special for ditto
+    if ($randomNums === 0) {
+        array_push($fourRandoms, $pokeObj{moves}[0]{move}{name});
+    }
+
+    return $fourRandoms;
 }
 
 // Function to find english description
@@ -24,6 +50,7 @@ function getEnglishDescription($pokeObj) {
     foreach ($pokeObj{flavor_text_entries} as $flavorText) {
         if ($flavorText{language}{name} == 'en') {
             $pokeDescription = $flavorText{flavor_text};
+            return $pokeDescription;
         } else {
             continue;
         }
@@ -57,28 +84,29 @@ function getEnglishDescription($pokeObj) {
             <img src="<?php echo $pokeImg; ?>" alt="Poke icon" class="pokeIcon">
             <p class="pokeName"></p>
         </section>
-        <form action="" method="GET" class="getinput">
+        <form class="getinput">
             <input id="input" name="pokemon" type="text" placeholder="type a pokemon name!">
-            <button id="inputBtn" class="btn search" type="submit">search</button>
+            <button id="inputBtn" class="btn search">search</button>
         </form>
     </section>
     <section class="P2">
-        <section class="Descriptionbox">
+        <section class="description" id="description">
             <p class="description"><?php echo $pokeDescription; ?></p>
         </section>
-        <section class="movesList">
+        <section class="moves" id="moves">
             <ul id="movesList">
             </ul>
         </section>
-        <section class="EvolutionIcon">
-            <img class="evolutionIcon" src="" alt="evicon">
+        <section class="evolution" id="evolution">
+            <img class="evolution" src="" alt="evicon">
             <p class="evolutionName"></p>
         </section>
         <section class="buttons">
-            <button id="previousbtn" class="btn" class="search"><==</button>
-            <button id="nextbtn" class="btn" class="search">==></button>
+            <button id="prevButton" class="btn" class="search"><==</button>
+            <button id="nextButton" class="btn" class="search">==></button>
         </section>
     </section>
 </section>
+<script src="assets/scripts/scripts.js"></script>
 </body>
 </html>

@@ -4,4 +4,4 @@
 
 - first exploration in php, here we go!
 
-[Link to PHP version](https://nbenin.github.io/pokephp/)
+[Referencing this one](https://nbenin.github.io/ajax-pokedex/)
