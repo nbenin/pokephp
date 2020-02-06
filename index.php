@@ -101,7 +101,7 @@ function getEnglishDescription($pokeObj) {
 <section class="container">
     <section class="P1">
         <section class="pokemonIcon">
-            <img src="<?php echo $pokeImg; ?>" alt="Poke icon" class="pokeIcon">
+            <img src="<?php echo $pokeImg; ?>" class="pokeIcon">
             <p class="pokeName"></p>
         </section>
         <form class="getinput">

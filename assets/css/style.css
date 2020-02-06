@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    font-family: "LoRes 12 OT", sans-serif;
+    font-family: "LoRes", sans-serif;
 }
 
 h1 {
@@ -13,16 +13,14 @@ h1 {
     font-style: normal;
     font-weight: 100;
 }
+
 body .container {
     display: flex;
-    width: 90vw;
-    height: 70vh;
     justify-content: center;
-    margin: auto;
 }
+
 body .container .pokeIcon {
     margin: 20vmin 5vmin auto auto;
-    position: relative;
     width: 35%;
 }
 body .container .P1 {
