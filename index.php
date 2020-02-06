@@ -10,14 +10,20 @@ if (isset($pokemon)) {
     $responseSpecies = file_get_contents('https://pokeapi.co/api/v2/pokemon-species/' . $pokemon);
     $dataPokemon = json_decode($responsePokemon, true);
     $dataSpecies = json_decode($responseSpecies, true);
-
+var_dump($dataSpecies{evolution_chain});
     // Set the image source variable
     $pokeImg = $dataPokemon{sprites}{front_default};
     // Set description
     $pokeDescription = getEnglishDescription($dataSpecies);
     // Set moves list
     $movesList = getMovesList($dataPokemon);
-    var_dump($movesList);
+    // Set evolution icon
+    $evolutionIcon = getEvolutionIcon($dataSpecies);
+
+}
+
+// Function for evolution icon
+function getEvolutionIcon($pokeObj) {
 
 }
 
@@ -95,6 +101,10 @@ function getEnglishDescription($pokeObj) {
         </section>
         <section class="moves" id="moves">
             <ul id="movesList">
+                <li><?php echo $movesList[0]; ?></li>
+                <li><?php echo $movesList[1]; ?></li>
+                <li><?php echo $movesList[2]; ?></li>
+                <li><?php echo $movesList[3]; ?></li>
             </ul>
         </section>
         <section class="evolution" id="evolution">

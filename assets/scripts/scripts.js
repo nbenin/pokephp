@@ -5,6 +5,9 @@
     let EVOLUTIONDIV = document.getElementById('evolution');
     let MOVESDIV = document.getElementById('moves');
 
+    EVOLUTIONDIV.style.display = 'none';
+    MOVESDIV.style.display = 'none';
+
     document.getElementById('nextButton').addEventListener('click', function () {
         if (descriptionCount === 0) {
             descriptionCount++;
