@@ -18,7 +18,6 @@ body .container {
     display: flex;
     justify-content: center;
 }
-
 body .container .pokeIcon {
     margin: 20vmin 5vmin auto auto;
     width: 35%;
@@ -31,19 +30,16 @@ body .container .P1 {
     background-repeat: no-repeat;
     width: 60vmin;
     height: 70vmin;
-    object-fit: fill;
     background-position: center;
     text-align: center;
 }
 body .container .P1 .getinput {
     margin: 18vh 3vw 0 0;
-    position: relative;
 }
 body .container .P1 #input {
     border: black 0.7vmin solid;
     border-radius: 5px;
     padding: 1.2vw;
-    position: relative;
 }
 body .container .btn {
     position: relative;
@@ -68,21 +64,24 @@ body .container .P2 {
     text-align: center;
 }
 body .container .P2 .description {
-    margin: 6vmax 3vmax 0 3vmax;
+    margin: 8vmax 6vmax 0 6vmax;
     position: relative;
-    font-size: smaller;
+    font-size: medium;
 }
-body .container .P2 .moves, body .container .P2 .evolution {
-    margin-top: 10vmin;
-    align-self: center;
+body .container .P2 .moves {
+    margin: 23vmin 2vmin 0 0;
+    font-size: x-large;
 }
 body .container .P2 .evolution {
-    margin-left: 20%;
+    margin: 9vmin 2vmin 0 5%;
+}
+body .container .P2 .evolution #evoImg {
+    width: 17vmin;
 }
 body .container .P2 .buttons {
     grid-row: 2/3;
     grid-column: 1/2;
-    margin: 20vmin 2vmin 0 28vmin;
+    margin: 20vmin 25vmin 0 28vmin;
 }
 body ul {
     list-style-type: none;

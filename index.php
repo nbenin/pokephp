@@ -1,4 +1,6 @@
 <?php
+// stuff
+declare(strict_types=1);
 // Get the pokemon name
 $pokemon = $_GET['pokemon'];
 
@@ -23,7 +25,7 @@ if (isset($pokemon)) {
 }
 
 // Function for evolution icon
-function getEvolutionDetails($pokeObj) {
+function getEvolutionDetails(array $pokeObj) : array {
 
     $evolutionDetails = [];
 
@@ -36,13 +38,15 @@ function getEvolutionDetails($pokeObj) {
 
     $evoData = file_get_contents('https://pokeapi.co/api/v2/pokemon/' . $pokeObj{evolves_from_species}{name});
     $evoChainData = json_decode($evoData, true);
+
     $evoImg = $evoChainData{sprites}{front_default};
     array_push($evolutionDetails, $evoImg);
+
     return $evolutionDetails;
 }
 
 // Function for moves list
-function getMovesList($pokeObj) {
+function getMovesList(array $pokeObj) : array {
     $fourRandoms = [];
     $movesCount = 4;
 
@@ -65,7 +69,7 @@ function getMovesList($pokeObj) {
 }
 
 // Function to find english description
-function getEnglishDescription($pokeObj) {
+function getEnglishDescription(array $pokeObj) : string {
     $pokeDescription = '';
     foreach ($pokeObj{flavor_text_entries} as $flavorText) {
         if ($flavorText{language}{name} == 'en') {
@@ -122,7 +126,7 @@ function getEnglishDescription($pokeObj) {
             </ul>
         </section>
         <section class="evolution" id="evolution">
-            <img class="evolution" src="<?php if($evolution[1] == null){echo '';} else{echo $evolution[1];} ?>">
+            <img class="evolution" id="evoImg" src="<?php if($evolution[1] == null){echo '';} else{echo $evolution[1];} ?>">
             <p class="evolutionName"><?php echo $evolution[0]; ?></p>
         </section>
         <section class="buttons">
